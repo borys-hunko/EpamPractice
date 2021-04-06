@@ -14,7 +14,7 @@ public class MyList<T> implements List<T> {
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException();
+        return numOfElements;
     }
 
     @Override
