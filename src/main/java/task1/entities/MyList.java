@@ -1,11 +1,17 @@
 package task1.entities;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 public class MyList<T> implements List<T> {
+    private T array[];
+    private int numOfElements;
+    private static final int INITIAL_CAPACITY = 10;
+
+    public MyList() {
+        array = (T[]) new Object[INITIAL_CAPACITY];
+        numOfElements = 0;
+    }
+
     @Override
     public int size() {
         throw new UnsupportedOperationException();
