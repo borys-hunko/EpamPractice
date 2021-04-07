@@ -98,4 +98,11 @@ public class MyListTest {
                 LocalDate.now());
         assertEquals(product,products.get(0));
     }
+
+    @Test
+    void testGetOnIncorrectIndex(){
+        Throwable exception=assertThrows(IndexOutOfBoundsException.class,
+                ()->products.get(1000));
+        assertEquals("no element with index 1000",exception.getMessage());
+    }
 }
