@@ -16,18 +16,26 @@ public class MyListTest {
     @BeforeEach
     void initProducts() {
         products = new MyList<>();
+        Product product = new Product();
+        product.setManufactureDate(LocalDate.now());
+        StringBuilder productNameBuilder = new StringBuilder("product#");
+        for (int i = 0; i < 5; i++) {
+            product.setPrice(BigDecimal.valueOf(i));
+            product.setName(productNameBuilder.append(i).toString());
+            products.add(product);
+        }
     }
 
     @Test
     @DisplayName("test size() after initialization")
     void testSizeAfterInit() {
-        assertEquals(0, products.size(), "should return 0");
+        assertEquals(5, products.size(), "should return 0");
     }
 
     @Test
     @DisplayName("test isEmpty()")
     void testIsEmpty() {
-        assertTrue(products.isEmpty(), "list must be empty");
+        assertFalse(products.isEmpty(), "list must be empty");
     }
 
     @Test
@@ -44,7 +52,7 @@ public class MyListTest {
     @DisplayName("test whether add method increases size of list")
     void testSizeAfterAddingElement() {
         products.add(null);
-        assertEquals(1, products.size());
+        assertEquals(6, products.size());
     }
 
     @Test
@@ -53,28 +61,24 @@ public class MyListTest {
         for (int i = 0; i < 11; i++) {
             products.add(null);
         }
-        assertEquals(11, products.size());
+        assertEquals(16, products.size());
     }
 
     @Test
     void testAddingToTheBeginningOfList() {
         products.add(0, null);
-        assertEquals(1, products.size());
+        assertEquals(6, products.size());
     }
 
     @Test
     void testAddingToTheEndOfList() {
         products.add(products.size(), null);
-        assertEquals(1, products.size());
+        assertEquals(6, products.size());
     }
 
     @Test
     @DisplayName("insert element in somewhere in the middle of the list")
     void testAddingToTheMiddleOfList() {
-        for (int i = 0; i < 5; i++) {
-            products.add(null);
-        }
-
         products.add(2, null);
         assertEquals(6, products.size());
     }
