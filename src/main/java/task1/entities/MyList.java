@@ -104,8 +104,7 @@ public class MyList<T> implements List<T> {
 
     @Override
     public T get(int index) {
-        throw new UnsupportedOperationException();
-
+        return array[index];
     }
 
     @Override
