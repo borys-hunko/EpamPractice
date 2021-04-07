@@ -70,12 +70,19 @@ public class MyListTest {
 
     @Test
     @DisplayName("insert element in somewhere in the middle of the list")
-    void testAddingToTheMiddleOfList(){
+    void testAddingToTheMiddleOfList() {
         for (int i = 0; i < 5; i++) {
             products.add(null);
         }
 
         products.add(2, null);
         assertEquals(6, products.size());
+    }
+
+    @Test
+    void testAddingOnTheWrongPosition() {
+        Throwable exception = assertThrows(IndexOutOfBoundsException.class,
+                () -> products.add(10, null));
+        assertEquals("there is no element with index 10", exception.getMessage());
     }
 }
