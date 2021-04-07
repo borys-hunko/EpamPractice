@@ -109,15 +109,16 @@ public class MyList<T> implements List<T> {
     }
 
     private void checkIndex(int index) {
-        if (index<0 || index>=numOfElements){
-            throw new IndexOutOfBoundsException("no element with index "+index);
+        if (index < 0 || index >= numOfElements) {
+            throw new IndexOutOfBoundsException("no element with index " + index);
         }
     }
 
     @Override
     public T set(int index, T element) {
-        throw new UnsupportedOperationException();
-
+        T oldValue = array[index];
+        array[index] = element;
+        return oldValue;
     }
 
     @Override
