@@ -56,4 +56,10 @@ public class MyListTest {
         }
         assertEquals(11,products.size());
     }
+
+    @Test
+    void testAddingToTheBeginningOfList(){
+        products.add(0,null);
+        assertEquals(1,products.size());
+    }
 }
