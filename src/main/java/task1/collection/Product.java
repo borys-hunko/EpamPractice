@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Product {
+    public static final int PRICE_PRECISION = 2;
     private String name;
     private BigDecimal price;
     private LocalDate manufactureDate;
@@ -14,7 +15,7 @@ public class Product {
 
     public Product(String name, BigDecimal price, LocalDate manufactureDate) {
         this.name = name;
-        this.price = price;
+        this.price = price.movePointRight(PRICE_PRECISION);
         this.manufactureDate = manufactureDate;
     }
 
@@ -31,7 +32,7 @@ public class Product {
     }
 
     public void setPrice(BigDecimal price) {
-        this.price = price;
+        this.price = price.movePointRight(PRICE_PRECISION);
     }
 
     public LocalDate getManufactureDate() {
