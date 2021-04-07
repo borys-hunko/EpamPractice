@@ -116,6 +116,7 @@ public class MyList<T> implements List<T> {
 
     @Override
     public T set(int index, T element) {
+        checkIndex(index);
         T oldValue = array[index];
         array[index] = element;
         return oldValue;
