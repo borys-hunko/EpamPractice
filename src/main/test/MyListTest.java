@@ -89,4 +89,13 @@ public class MyListTest {
                 () -> products.add(10, null));
         assertEquals("there is no element with index 10", exception.getMessage());
     }
+
+    @Test
+    void testGet(){
+        Product product=new Product(
+                "product#0",
+                BigDecimal.valueOf(0),
+                LocalDate.now());
+        assertEquals(product,products.get(0));
+    }
 }
