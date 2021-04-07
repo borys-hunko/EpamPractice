@@ -40,4 +40,10 @@ public class MyListTest {
         product.setManufactureDate(LocalDate.of(2021,1,1));
         assertTrue(products.add(product));
     }
+
+    @Test
+    void testSizeAfterAddingElement(){
+        products.add(null);
+        assertEquals(1,products.size());
+    }
 }
