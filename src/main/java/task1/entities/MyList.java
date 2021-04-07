@@ -104,7 +104,14 @@ public class MyList<T> implements List<T> {
 
     @Override
     public T get(int index) {
+        checkIndex(index);
         return array[index];
+    }
+
+    private void checkIndex(int index) {
+        if (index<0 || index>=numOfElements){
+            throw new IndexOutOfBoundsException("no element with index "+index);
+        }
     }
 
     @Override
