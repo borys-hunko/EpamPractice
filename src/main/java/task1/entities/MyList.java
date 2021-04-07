@@ -19,7 +19,7 @@ public class MyList<T> implements List<T> {
 
     @Override
     public boolean isEmpty() {
-        return numOfElements==0;
+        return numOfElements == 0;
     }
 
     @Override
@@ -48,16 +48,16 @@ public class MyList<T> implements List<T> {
 
     @Override
     public boolean add(T t) {
-        if(numOfElements==array.length){
-            allocateMemoryForArray(array,(int)(array.length*1.5));
+        if (numOfElements == array.length) {
+            allocateMemoryForArray(array, (int) (array.length * 1.5));
         }
-        array[numOfElements]=t;
+        array[numOfElements] = t;
         numOfElements++;
         return true;
     }
 
-    private void allocateMemoryForArray(T[] array,int newSize) {
-        this.array=Arrays.copyOf(array,newSize);
+    private void allocateMemoryForArray(T[] array, int newSize) {
+        this.array = Arrays.copyOf(array, newSize);
     }
 
     @Override
@@ -116,9 +116,17 @@ public class MyList<T> implements List<T> {
 
     @Override
     public void add(int index, T element) {
-        throw new UnsupportedOperationException();
-
+        if (numOfElements == array.length) {
+            allocateMemoryForArray(array, (int) (array.length * 1.5));
+        }
+        System.arraycopy(array, index,
+                array, index + 1,
+                numOfElements - index);
+        array[index] = element;
+        ++numOfElements;
     }
+
+
 
     @Override
     public T remove(int index) {
