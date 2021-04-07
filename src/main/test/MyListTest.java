@@ -91,21 +91,30 @@ public class MyListTest {
     }
 
     @Test
-    void testGet(){
-        Product product=new Product(
+    void testGet() {
+        Product product = new Product(
                 "product#0",
                 BigDecimal.valueOf(0),
                 LocalDate.now());
-        assertEquals(product,products.get(0));
+        assertEquals(product, products.get(0));
     }
 
     @Test
     @DisplayName("test get method when incorrect index passed")
-    void testGetOnIncorrectIndex(){
-        Throwable exception=assertThrows(IndexOutOfBoundsException.class,
-                ()->products.get(1000));
-        assertEquals("no element with index 1000",exception.getMessage());
+    void testGetOnIncorrectIndex() {
+        Throwable exception = assertThrows(IndexOutOfBoundsException.class,
+                () -> products.get(1000));
+        assertEquals("no element with index 1000", exception.getMessage());
     }
 
-    
+    @Test
+    void testReturnedValueOfSet() {
+        Product newValue = new Product(
+                "new product",
+                BigDecimal.valueOf(999.1321),
+                LocalDate.of(2020, 2, 2)
+        );
+        Product oldValue = products.get(0);
+        assertEquals(oldValue, products.set(0, newValue));
+    }
 }
