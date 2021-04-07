@@ -100,9 +100,12 @@ public class MyListTest {
     }
 
     @Test
+    @DisplayName("test get method when incorrect index passed")
     void testGetOnIncorrectIndex(){
         Throwable exception=assertThrows(IndexOutOfBoundsException.class,
                 ()->products.get(1000));
         assertEquals("no element with index 1000",exception.getMessage());
     }
+
+    
 }
